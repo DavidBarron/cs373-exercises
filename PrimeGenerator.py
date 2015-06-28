@@ -96,7 +96,7 @@ class RangePrimesYield :
             while self.f <= self.l :
                 if isPrime(self.f) :
                     yield self.f
-                    self.f += 1
+                    #self.f += 1
                 self.f +=1
             raise StopIteration
 
