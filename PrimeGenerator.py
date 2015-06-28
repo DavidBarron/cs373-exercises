@@ -23,6 +23,9 @@ def isPrime (i) :
         return True
     else :  # even is never prime
         return False
+		
+def FirstPrimesComprehension(i) :
+	return list(x for x in range(2,i+1) if all(x%y for y in range(2,i-1)))
 
 class FirstPrimes :
     class It :
@@ -79,6 +82,32 @@ class RangePrimes :
 
     def __iter__ (self) :
         return RangePrimes.It(self.i, self.j)
+		
+class RangePrimesYield :
+    class It :
+        def __init__ (self,i,j) :
+            self.f = i  # beginning of primes we may output
+            self.l = j  # end of primes we may ouput
+
+        def __iter__ (self) :
+            return self
+
+        def __next__ (self) :
+            while self.f <= self.l :
+                if isPrime(self.f) :
+                    yield self.f
+                    self.f += 1
+                self.f +=1
+            raise StopIteration
+
+    def __init__ (self, i, j) :
+        self.i = i
+        self.j = j
+
+    def __iter__ (self) :
+        return RangePrimes.It(self.i, self.j)
+
+	
 
 
 
