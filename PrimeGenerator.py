@@ -25,7 +25,7 @@ def isPrime (i) :
         return False
 		
 def FirstPrimesComprehension(i) :
-	return list(x for x in range(2,i+1) if all(x%y for y in range(2,i-1)))
+	return [x for x in range(2, i+1) if all(x%y for y in range(2, min(x, i-1)))]
 
 class FirstPrimes :
     class It :
